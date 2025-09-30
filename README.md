@@ -12,7 +12,7 @@ Recebi um **PCAP** (tráfego capturado) do **servidor web** da empresa. Meu obje
 5) **Procurei exfiltração** (picos de bytes **HTTP/HTTPS**) e padrões de automação.
 6) **Consolidei evidências** em **timeline**; criei **regras Sigma/KQL** e **relatórios** técnico/executivo com recomendações.
 
-## Principais achados (generalizados, sem spoilers)
+## Principais achados (generalizados)
 - **Entrada:** *Upload* malicioso via **dupla extensão** (`.jpg.php`) contornando validação.
 - **Pós-exploração:** **Reverse shell** com **conexão de saída :8080** para IP externo.
 - **Exfiltração:** **POST** em **443** com volume anômalo sugerindo envio de dados sensíveis.
@@ -25,7 +25,7 @@ Recebi um **PCAP** (tráfego capturado) do **servidor web** da empresa. Meu obje
 
 ---
 
-## Objetivos de investigação (sem spoilers)
+## Objetivos de investigação 
 
 <summary><b>O1 — Origem do tráfego suspeito (GeoIP)</b></summary>
 
