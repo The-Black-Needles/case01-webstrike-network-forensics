@@ -1,0 +1,5 @@
+from web_logs
+| where cs_method in ("POST","PUT") and bytes_sent > 500000
+| summarize total_bytes = sum(bytes_sent), reqs = count()
+  by c_ip, uri_stem, user_agent, bin(@timestamp, 5m)
+| where total_bytes > 5000000 and reqs >= 10

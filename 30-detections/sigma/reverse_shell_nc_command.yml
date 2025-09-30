@@ -1,0 +1,28 @@
+title: Possible PHP Webshell Reverse Shell via Netcat (FIFO pattern)
+id: WEB-NC-REVSHELL-001
+status: experimental
+description: Detects uploads or requests containing a classic PHP reverse shell pattern using mkfifo and netcat.
+references:
+  - https://attack.mitre.org/techniques/T1059/
+logsource:
+  category: webserver
+detection:
+  sel_fifo:
+    request|contains:
+      - "mkfifo /tmp/f"
+  sel_shell:
+    request|contains:
+      - "/bin/sh -i"
+  sel_nc:
+    request|contains:
+      - "nc "
+      - ">/tmp/f"
+  condition: sel_fifo and sel_shell and sel_nc
+falsepositives:
+  - Testes de segurança controlados em ambientes de dev
+level: high
+fields:
+  - c-ip
+  - cs-method
+  - cs-uri-stem
+  - request

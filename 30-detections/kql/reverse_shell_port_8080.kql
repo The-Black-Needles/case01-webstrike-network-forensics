@@ -1,0 +1,5 @@
+from network_traffic
+| where dest_port == 8080
+| summarize conns = count(), bytes_out = sum(bytes_sent)
+  by src_ip, dest_ip, bin(@timestamp, 5m)
+| where conns > 5 or bytes_out > 2000000

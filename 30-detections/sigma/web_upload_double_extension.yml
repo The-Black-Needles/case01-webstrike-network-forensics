@@ -1,0 +1,21 @@
+title: Web Upload with Double Extension (.jpg.php)
+id: WEB-DOUBLE-EXT-001
+status: experimental
+logsource:
+  category: webserver
+detection:
+  sel_post:
+    cs-method: POST
+  sel_path:
+    request|contains:
+      - "/upload"
+      - "/reviews/upload"
+  sel_double_ext:
+    request|contains:
+      - ".jpg.php"
+      - ".png.php"
+      - ".gif.php"
+  condition: sel_post and sel_path and sel_double_ext
+falsepositives:
+  - raros cenários de dev
+level: high
