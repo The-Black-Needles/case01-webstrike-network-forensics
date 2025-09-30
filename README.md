@@ -27,14 +27,13 @@ Recebi um **PCAP** (tráfego capturado) do **servidor web** da empresa. Meu obje
 
 ## Objetivos de investigação (sem spoilers)
 
-<details><summary><b>O1 — Origem do tráfego suspeito (GeoIP)</b></summary>
+<summary><b>O1 — Origem do tráfego suspeito (GeoIP)</b></summary>
 
 **Pergunta:** de onde partiu a atividade maliciosa?  
 **O que fiz:** levantei *top talkers* (Wireshark → Endpoints) e consultei **GeoIP** do IP externo.  
 **Por que importa:** apoia *geo-blocking*, triagem de *threat intel* e contexto de risco.  
 **Artefatos:** [`endpoints.txt`](20-network-analysis/tshark-commands.md) • [`timeline.md`](20-network-analysis/timeline.md)  
 **Resposta:** **[omitida — no spoilers]**
-</details>
 
 <details><summary><b>O2 — Identificação do agente cliente (User-Agent)</b></summary>
 
