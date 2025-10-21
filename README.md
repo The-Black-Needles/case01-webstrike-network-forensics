@@ -29,21 +29,21 @@ Recebi um **PCAP** (tráfego capturado) do **servidor web** da empresa. Meu obje
 
 <summary><b>O1 — Origem do tráfego suspeito (GeoIP)</b></summary>
 
-**De onde partiu a atividade maliciosa?  
+**De onde partiu a atividade maliciosa?**  
 **O que fiz:** levantei *top talkers* (Wireshark → Endpoints) e consultei **GeoIP** do IP externo.  
 **Por que importa:** apoia *geo-blocking*, triagem de *threat intel* e contexto de risco.  
 **Artefatos:** [`endpoints.txt`](20-network-analysis/tshark-commands.md) • [`timeline.md`](20-network-analysis/timeline.md)  
 
 <summary><b>O2 — Identificação do agente cliente (User-Agent)</b></summary>
 
-**Qual *User-Agent* foi usado na interação inicial?  
+**Qual *User-Agent* foi usado na interação inicial?**  
 **O que fiz:** reconstruí **HTTP Stream** e inspecionei cabeçalhos; comparei com perfis legítimos.  
 **Por que importa:** ajuda a criar **regras de filtragem** e detectar *tooling* disfarçado.  
 **Artefatos:** [`wireshark-filters.md`](20-network-analysis/wireshark-filters.md) • `report-technical.md`  
 
 <summary><b>O3 — Mecanismo de entrada (upload malicioso)</b></summary>
 
-**Houve **upload de script** e como passou pela validação?  
+**Houve **upload de script** e como passou pela validação?**  
 **O que fiz:** filtrei `HTTP POST` multipart, busquei `filename=` e indícios de **dupla extensão**; confirmei sucesso do upload.  
 **Por que importa:** evidencia **bypass de validação** e define **controles WAF**/hardening.  
 **Artefatos:** [`web_upload_double_extension.yml`](30-detections/sigma/web_upload_double_extension.yml) • [`post_uploads.tsv`](20-network-analysis/tshark-commands.md)  
@@ -51,7 +51,7 @@ Recebi um **PCAP** (tráfego capturado) do **servidor web** da empresa. Meu obje
 
 <summary><b>O4 — Local de armazenamento de uploads</b></summary>
 
-**Onde o aplicativo armazena os arquivos enviados?  
+**Onde o aplicativo armazena os arquivos enviados?**  
 **O que fiz:** segui **redirects** (HTTP 3xx) e navegação pós-upload para inferir o diretório.  
 **Por que importa:** permite **remediação** (limpeza) e **no-exec** no diretório de mídia.  
 **Artefatos:** [`timeline.md`](20-network-analysis/timeline.md) • `report-technical.md`  
@@ -65,7 +65,7 @@ Recebi um **PCAP** (tráfego capturado) do **servidor web** da empresa. Meu obje
 
 <summary><b>O6 — Tentativa de exfiltração</b></summary>
 
-**Houve **envio de dados sensíveis** via HTTP/HTTPS?  
+**Houve **envio de dados sensíveis** via HTTP/HTTPS?**  
 **O que fiz:** busquei **POST/PUT** com **alto volume** e padrões de `curl`/automação; sinalizei artefatos sensíveis (ex.: `/etc/passwd` como **exemplo genérico**).  
 **Por que importa:** prioriza **resposta a incidentes** e criação de **regras de exfil**.  
 **Artefatos:** [`web_exfil_high_volume.kql`](30-detections/kql/web_exfil_high_volume.kql) • `http_posts.tsv`  
