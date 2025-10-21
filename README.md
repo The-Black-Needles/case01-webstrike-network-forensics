@@ -1,5 +1,4 @@
 # WebStrike Network Forensics
-*(slug: case01)*
 **Autor:** Ricardo Almeida · **GitHub:** @The-Black-Needles · **Data:** 29/09/2025
 
 ## Contexto
